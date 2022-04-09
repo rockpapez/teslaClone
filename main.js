@@ -27,25 +27,3 @@ closeBtn.addEventListener("click", (e) => {
 backdrop.addEventListener("click", (e) => {
   closeMenu();
 });
-
-// Scrolling
-document.scrollPosition = 0;
-const direction = window.pageYOffset - scrollPosition;
-document.lastCentered = 0;
-
-document.addEventListener("scroll", () => {
-  const direction = window.pageYOffset - scrollPosition > 0 ? "down" : "up";
-  const sections = [...document.querySelectorAll("section")];
-
-  const destIndex =
-    direction === "up" ? document.lastCentered - 1 : document.lastCentered + 1;
-  if (destIndex >= 0 && destIndex < sections.length) {
-    window.scroll(0, sections[destIndex].offsetTop);
-  }
-
-  sections.forEach((section, index) => {
-    if (window.pageYOffset === section.offsetTop) {
-      document.lastCentered = index;
-    }
-  });
-});
